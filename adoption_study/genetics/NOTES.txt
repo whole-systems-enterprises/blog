@@ -1,0 +1,2 @@
+
+sqlite3 data/disgenet_2017.db > output/db_output.csv
