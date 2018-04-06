@@ -50,3 +50,5 @@ congenital without mental retardation
 novelty
 vegetative
 renin-dependent hypertension
+epilepsy
+epileptic
