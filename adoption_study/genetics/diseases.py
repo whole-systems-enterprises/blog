@@ -98,8 +98,6 @@ for i in gene_2_disease.keys():
                     graph_as_dict[key] = 0
                 graph_as_dict[key] += 1
 
-
-
 #
 # build graph
 #
@@ -111,7 +109,6 @@ for key in graph_as_dict.keys():
     jj = int(key.split('_')[1])
     weight = graph_as_dict[key]
     G.add_edge(ii, jj, weight=weight)
-
 
 #
 # ego network
@@ -134,13 +131,18 @@ if compute_ego_network:
 #for node in nx.node_clique_number(G):
 #    print(node)
 
-# n = len(nodes.keys())
-# k = 1. / math.sqrt(n)
-# pos = nx.spring_layout(G)
-# nx.draw_networkx(G, pos=pos, with_label=False, node_size=2, node_color='blue', edge_color='grey')
+#
+# plot
+#
+n = len(nodes.keys())
+k = 1. / math.sqrt(n)
+pos = nx.spring_layout(G)
+nx.draw_networkx(G, pos=pos, with_label=False, node_size=2, node_color='blue', edge_color='grey')
 
-# nx.draw_spring(G)
-# plt.show()
+nx.draw_spring(G)
+plt.savefig(output_directory + '/plot.png')
+plt.close()
+
 
 
 

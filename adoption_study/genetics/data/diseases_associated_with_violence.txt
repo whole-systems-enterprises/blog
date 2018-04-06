@@ -13,7 +13,9 @@ conduct
 oppositional
 defiant
 delirium
-dementia
+
+#########dementia
+
 dissociative
 trauma
 posttraumatic stress
@@ -26,19 +28,26 @@ delusion
 hallucination
 paranoid
 violent
-alzheimer
-retardation
+
+#########alzheimer
+
+#########retardation
+
 dependent
 avoidant
 narcissistic
 borderline
 personality
-brain injury
+
+#########brain injury
+
 blunt trauma
 affective
 thyroid storm
 cushing
 androgen dysregulation
 estrogen dysregulation
-seizure
+
+######seizure
+
 histrionic
