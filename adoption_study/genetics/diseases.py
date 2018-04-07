@@ -34,7 +34,7 @@ f.close()
 #
 # extract from database
 #
-os.system('cat sql.sql | sqlite3 data/disgenet_2017.db > ' + output_directory + '/db_output.txt')
+os.system('cat diseases_sql.sql | sqlite3 data/disgenet_2017.db > ' + output_directory + '/db_output.txt')
 
 #
 # remove duplicates in DB output
