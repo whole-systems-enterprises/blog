@@ -7,6 +7,7 @@ import json
 import pprint as pp
 import networkx as nx
 import math
+import numpy as np
 
 import matplotlib.pyplot as plt
 
@@ -14,12 +15,11 @@ import matplotlib.pyplot as plt
 # user settings
 #
 compute_ego_network = False
-make_plot = False
-make_table = True
+make_plot = True
+make_table = False
 output_directory = 'output'
 diseases_list_file = 'data/diseases_associated_with_violence.txt'
 skip_words_file = 'data/words_and_phrases_to_skip.txt'
-
 
 #
 # load files
@@ -128,36 +128,6 @@ if compute_ego_network:
 with open(output_directory + '/nodes.json') as f:
     nodes = json.load(f)
 
-
-
-
-#
-# node clique number
-#
-#for node in nx.node_clique_number(G):
-#    print(node)
-
-#
-# plot
-#
-if make_plot:
-    n = len(nodes.keys())
-    k = 2. / math.sqrt(n)
-    pos = nx.spring_layout(G, k=k)
-    nx.draw_networkx(G, pos=pos, with_labels=False, node_size=2, node_color='blue', edge_color='grey')
-
-    nx.draw_spring(G)
-    plt.savefig(output_directory + '/plot.png')
-    plt.close()
-
-
-
-
-# nx.cliques_containing_node(G, nodes=None, cliques=None)
-# 
-
-
-
 #
 # make table
 #
@@ -191,6 +161,38 @@ if make_table:
     f.write(html)
     f.close()
 
+
+
+#
+# plot
+#
+if make_plot:
+
+    size_list = []
+    to_remove = []
+    for gene_id in nodes.keys():
+        size_list.append(nodes[gene_id]['ego_network_size'])
+    p = np.percentile(size_list, [20])[0]
+    for gene_id in nodes.keys():
+        if nodes[gene_id]['ego_network_size'] > p:
+            to_remove.append(int(gene_id))
+
+
+    GG = G.copy()
+    GG.remove_nodes_from(to_remove)
+
+
+    n = len(nodes.keys())
+    k = 1. / math.sqrt(n)
+
+    plt.figure(figsize=[15, 12])
+
+    pos = nx.spring_layout(GG, k=k)
+    nx.draw_networkx(GG, pos=pos, with_labels=False, node_size=2, node_color='red', edge_color='darkgray')
+
+
+    plt.savefig(output_directory + '/plot.png')
+    plt.close()
 
 
 
