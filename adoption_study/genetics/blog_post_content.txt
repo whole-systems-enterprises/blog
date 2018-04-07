@@ -1,0 +1,15 @@
+I recently developed a method for specifying a comprehensive gene list for investigating genes related to psychiatric violence, which I describe below. First though, here's a cool picture from the analysis:
+
+<img class="size-full wp-image-1663 aligncenter" src="http://genderpunk360.com/wp-content/uploads/2018/04/gene_network_graph.png" alt="" width="727" height="440" />
+<h1>Method</h1>
+I started by extracting a list of diseases involving violence from [1], removing epilepsy, dementia, mental retardation (is there a better word for this?), and Alzheimer's disease. Also removed sexual sadism from the list as one might debate whether or not this qualifies as "disease". I then matched those diseases by name--more accurately by components within each name--to diseases contained in DisGeNET [2] to determine genes associated with those diseases. Next, I built a network graph of the genes where an edge between two genes indicates one or more diseases in common. A tractable subset of this graph is pictured above for demonstration. Finally, I computed the size of the ego graph for each gene (node) and ranked them, as listed below. Greater ego network size indicates greater probable biological importance vis-a-vis psychiatric diseases having violence as a symptom.
+
+I posted my code used for this analysis at [3].
+<h1>References</h1>
+<ol>
+	<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2686644/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2686644/</a></li>
+ 	<li><a href="http://www.disgenet.org">http://www.disgenet.org</a></li>
+ 	<li><a href="https://github.com/whole-systems-enterprises/blog/tree/master/adoption_study/genetics">https://github.com/whole-systems-enterprises/blog/tree/master/adoption_study/genetics</a></li>
+</ol>
+<h1>Results</h1>
+Here is the gene list I put together:
